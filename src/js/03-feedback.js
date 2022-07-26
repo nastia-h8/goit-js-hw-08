@@ -20,14 +20,24 @@ function onFormSubmit(event) {
     event.preventDefault();
     event.currentTarget.reset();
 
+    console.log(JSON.parse(localStorage.getItem(STORAGE_KEY)));
+
     localStorage.removeItem(STORAGE_KEY);
 }
 
 function getDataFromStorage() {
     const savedData = JSON.parse(localStorage.getItem(STORAGE_KEY));
 
-    if (savedData) {
-        emailInput.value = savedData.email;
-        textInput.value = savedData.message;
+    // if (savedData) {
+    //     emailInput.value = savedData.email;
+    //     textInput.value = savedData.message;
+    // }
+
+    if (savedData.email) {
+    emailInput.value = savedData.email;
+    }
+
+    if (savedData.message) {
+textInput.value = savedData.message;
     }
 }
