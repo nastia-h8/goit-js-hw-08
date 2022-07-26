@@ -20,7 +20,7 @@ function onFormInput(event) {
     const email = formData.email.value;
     const message = formData.message.value;
 
-    localStorage.setItem(STORAGE_KEY, JSON.stringify(email, message));
+    localStorage.setItem(STORAGE_KEY, JSON.stringify({ email, message }));
 }
 
 function onFormSubmit(event) {
