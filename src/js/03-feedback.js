@@ -24,19 +24,25 @@ function onFormInput(event) {
 }
 
 function onFormSubmit(event) {
-    console.log(JSON.parse(localStorage.getItem(STORAGE_KEY)));
-
     event.preventDefault();
-    event.currentTarget.reset();
 
-   localStorage.removeItem(STORAGE_KEY);
+    const {elements: { email, message }}  = event.currentTarget;
+
+    if (email.value === "" || message.value === "") {
+        return window.alert("Усі поля повинні бути заповнені!");
+    } 
+
+    console.log(JSON.parse(localStorage.getItem(STORAGE_KEY)));
+    
+    event.currentTarget.reset();
+    localStorage.removeItem(STORAGE_KEY);
 }
 
 function getDataFromStorage() {
     const savedData = JSON.parse(localStorage.getItem(STORAGE_KEY));
 
     if (savedData) {
-    emailInput.value = savedData.email;
-    textInput.value = savedData.message;
-  }
+        emailInput.value = savedData.email;
+        textInput.value = savedData.message;
+    }
 }
